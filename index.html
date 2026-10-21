@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Suhani ❤️</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #220e30, #71365c, #180f2b);
+  color: white;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+.card {
+  max-width: 500px;
+  padding: 28px;
+  border-radius: 24px;
+  background: #ffffff12;
+  border: 1px solid #ffffff35;
+}
+h1 { color: #ffb8d8; font-size: 40px; }
+h2 { color: #ffc5df; }
+p { line-height: 1.8; }
+input, button {
+  padding: 13px;
+  margin: 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 25px;
+  font-size: 16px;
+}
+input { border: 0; }
+button {
+  border: 0;
+  background: #ffafd0;
+  color: #35152c;
+  font-weight: bold;
+  cursor: pointer;
+}
+#letter { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div style="font-size:48px">❤️</div>
+  <p>A little surprise made just for you...</p>
+  <h1>Happy Birthday, Suhani!</h1>
+  <p>Four years, countless memories, one special person. 🥹</p>
+
+  <h2>Unlock your surprise 🔐</h2>
+  <p>Hint: The day our story began ❤️</p>
+
+  <form id="unlock">
+    <input id="nickname" type="password"
+      placeholder="Our special nickname" required>
+    <button type="submit">Open my letter 💌</button>
+  </form>
+  <p id="error"></p>
+
+  <div id="letter">
+    <h2>My Suhani 🫂</h2>
+    <p>Kaash aaj main tumhare paas hota aur tumhe
+    saamne se birthday wish kar pata.</p>
+    <p>Thank you for these four beautiful years,
+    all the memories, laughter and little moments
+    that have made you so special to me.</p>
+    <p>I hope you always smile, follow your dreams
+    and feel loved. I want us to keep learning,
+    growing and making beautiful memories together.</p>
+    <h2>I love you, Suhani. ♾️❤️</h2>
+    <p>Happy Birthday, meri jaan! 🎂</p>
+  </div>
+</div>
+
+<script>
+const specialNickname = "meri motki";
+
+document.getElementById("unlock").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const answer = document.getElementById("nickname").value.trim().toLowerCase();
+
+  if (answer === specialNickname.toLowerCase()) {
+    document.getElementById("letter").style.display = "block";
+    document.getElementById("error").textContent = "";
+    document.getElementById("letter").scrollIntoView({behavior: "smooth"});
+  } else {
+    document.getElementById("error").textContent = "Try again, meri jaan ❤️";
+  }
+});
+</script>
+</body>
+</html>
