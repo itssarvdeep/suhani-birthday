@@ -4,95 +4,489 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Suhani ❤️</title>
-<style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  background: linear-gradient(135deg, #220e30, #71365c, #180f2b);
+#gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #572039, #100912 75%);
+}
+
+#gate h1 {
+  font-size: clamp(38px, 9vw, 60px);
+}
+
+#gate input {
+  width: min(100%, 300px);
+  padding: 15px;
+  border: 1px solid #ff9cbb;
+  border-radius: 30px;
+  background: #261521;
   color: white;
-  font-family: Georgia, serif;
+  font-size: 16px;
   text-align: center;
 }
-.card {
-  max-width: 500px;
-  padding: 28px;
-  border-radius: 24px;
-  background: #ffffff12;
-  border: 1px solid #ffffff35;
+
+#gateMessage {
+  color: #ffb1c9;
+  min-height: 24px;
 }
-h1 { color: #ffb8d8; font-size: 40px; }
-h2 { color: #ffc5df; }
-p { line-height: 1.8; }
-input, button {
-  padding: 13px;
-  margin: 8px 0;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 25px;
+
+body.locked {
+  overflow: hidden;
+}
+<style>
+:root {
+  --pink: #ff719a;
+  --cream: #fff1e8;
+  --muted: #d8bdca;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+  
+<div id="gate">
+  <p class="eyebrow">A little secret, just for you</p>
+  <h1>Hey, <span style="color:#ff719a">Suhani ❤️</span></h1>
+  <p class="intro">
+    Before you enter this little world,
+    tell me your special nickname. 💌
+  </p>
+
+  <form id="nicknameForm">
+    <input
+      id="nicknameInput"
+      type="password"
+      placeholder="Enter your nickname..."
+      autocomplete="off"
+      required
+      aria-label="Your secret nickname"
+    >
+    <br>
+    <button class="btn" type="submit">
+      Unlock my surprise 💗
+    </button>
+  </form>
+
+  <p id="gateMessage" aria-live="polite"></p>
+</div>
+body {
+  margin: 0;
+  background: #100912;
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+button { font: inherit; }
+
+.hero {
+  min-height: 100svh;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 40%, #572039 0%, #26101f 42%, #100912 78%);
+}
+
+.eyebrow {
+  color: #ffb1c9;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font: 11px Arial, sans-serif;
+}
+
+h1 {
+  font-size: clamp(43px, 10vw, 76px);
+  line-height: 1.1;
+  font-weight: normal;
+  margin: 22px 0;
+}
+
+h1 span { color: var(--pink); }
+
+.intro {
+  max-width: 470px;
+  line-height: 1.9;
+  color: var(--muted);
   font-size: 16px;
 }
-input { border: 0; }
-button {
-  border: 0;
-  background: #ffafd0;
-  color: #35152c;
-  font-weight: bold;
+
+.btn {
+  border: 1px solid #ff9cbb;
+  border-radius: 40px;
+  padding: 14px 25px;
+  margin: 12px 5px;
+  color: white;
+  background: linear-gradient(120deg, #b72e62, #e85b8c);
   cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
 }
-#letter { display: none; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px #ff719a55;
+}
+
+.btn.secondary { background: transparent; }
+
+.heart {
+  position: absolute;
+  bottom: -30px;
+  color: #ff8eb0;
+  opacity: .65;
+  pointer-events: none;
+  animation: floatUp 9s linear forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .7; }
+  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+section {
+  padding: 75px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  font-size: clamp(29px, 6vw, 43px);
+  font-weight: normal;
+  margin: 12px 0 18px;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 0 auto 32px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 750px;
+  margin: 30px auto;
+}
+
+.memory {
+  background: #261521;
+  border: 1px solid #66334b;
+  padding: 10px;
+  border-radius: 13px;
+  transition: transform .25s;
+}
+
+.memory:hover { transform: translateY(-5px); }
+
+.memory img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #38202e;
+}
+
+.memory p {
+  color: #f5c7d6;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 13px 4px 7px;
+}
+
+.letter-wrap {
+  max-width: 640px;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid #764158;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #2c1424, #190e19);
+  box-shadow: 0 15px 60px #0004;
+}
+
+.envelope {
+  font-size: 55px;
+  margin: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.08); }
+}
+
+.letter {
+  text-align: left;
+  line-height: 2;
+  color: #f5dce5;
+  white-space: pre-line;
+  animation: fadeIn .8s ease;
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.final {
+  padding: 85px 20px 100px;
+  background: radial-gradient(ellipse at center, #50203b, #100912 70%);
+}
+
+.final-heart {
+  font-size: 62px;
+  animation: pulse 1.6s infinite;
+}
+
+footer {
+  color: #a98b9b;
+  padding: 25px 15px;
+  font: 12px Arial, sans-serif;
+}
+
+@media (min-width: 650px) {
+  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 400px) {
+  .gallery { gap: 9px; }
+  .memory { padding: 6px; }
+  section { padding: 55px 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="card">
-  <div style="font-size:48px">❤️</div>
-  <p>A little surprise made just for you...</p>
-  <h1>Happy Birthday, Suhani!</h1>
-  <p>Four years, countless memories, one special person. 🥹</p>
 
-  <h2>Unlock your surprise 🔐</h2>
-  <p>Hint: The day our story began ❤️</p>
+<header class="hero" id="home">
+  <p class="eyebrow">A little world made for you</p>
+  <h1>For You,<br><span>Suhani ❤️</span></h1>
 
-  <form id="unlock">
-    <input id="nickname" type="password"
-      placeholder="Our special nickname" required>
-    <button type="submit">Open my letter 💌</button>
-  </form>
-  <p id="error"></p>
+  <p class="intro">
+    Some people make ordinary moments feel special.
+    And sometimes, a few words are not enough to say
+    what someone means to you.
+    <br><br>
+    So I made this little corner of the internet just for you.
+  </p>
 
-  <div id="letter">
-    <h2>My Suhani 🫂</h2>
-    <p>Kaash aaj main tumhare paas hota aur tumhe
-    saamne se birthday wish kar pata.</p>
-    <p>Thank you for these four beautiful years,
-    all the memories, laughter and little moments
-    that have made you so special to me.</p>
-    <p>I hope you always smile, follow your dreams
-    and feel loved. I want us to keep learning,
-    growing and making beautiful memories together.</p>
-    <h2>I love you, Suhani. ♾️❤️</h2>
-    <p>Happy Birthday, meri jaan! 🎂</p>
+  <button class="btn" onclick="openSurprise()">
+    Open your little surprise 💌
+  </button>
+
+  <p style="color:#bda1b1;font-size:12px;margin-top:25px">
+    Made with care, just for you ✨
+  </p>
+</header>
+
+<section id="memories">
+  <p class="eyebrow">Little moments, lasting memories</p>
+  <h2>Our Little Gallery 🌷</h2>
+  <p class="subtitle">
+    Every picture has its own little story.
+    Add your favourite photos here and let them speak.
+  </p>
+
+  <div class="gallery">
+    <div class="memory">
+      <img src="photo1.jpg" alt="Our memory 1" loading="lazy">
+      <p>A little moment worth remembering ❤️</p>
+    </div>
+
+    <div class="memory">
+      <img src="photo2.jpg" alt="Our memory 2" loading="lazy">
+      <p>Some memories never get old ✨</p>
+    </div>
+
+    <div class="memory">
+      <img src="photo3.jpg" alt="Our memory 3" loading="lazy">
+      <p>A moment frozen in time 🌸</p>
+    </div>
+
+    <div class="memory">
+      <img src="photo4.jpg" alt="Our memory 4" loading="lazy">
+      <p>One more reason to smile 💗</p>
+    </div>
+
+    <div class="memory">
+      <img src="photo5.jpg" alt="Our memory 5" loading="lazy">
+      <p>Some things are simply special 🫶</p>
+    </div>
+
+    <div class="memory">
+      <img src="photo6.jpg" alt="Our memory 6" loading="lazy">
+      <p>And this is another one 🌙</p>
+    </div>
   </div>
+</section>
+
+<section id="letter">
+  <p class="eyebrow">A few words from the heart</p>
+  <h2>A Letter for You 💌</h2>
+  <p class="subtitle">
+    There are things that are easier to write than to say.
+  </p>
+
+  <div class="letter-wrap">
+    <div class="envelope" id="envelope">💌</div>
+    <p id="letterHint" style="color:#e6b8ca;line-height:1.8">
+      There's a little letter waiting for you.
+      <br>Open it whenever you're ready.
+    </p>
+
+    <button class="btn" id="letterButton" onclick="openLetter()">
+      Open my letter ❤️
+    </button>
+
+    <div class="letter hidden" id="letterText"></div>
+  </div>
+</section>
+
+<div class="final" id="final">
+  <div class="final-heart">💗</div>
+  <p class="eyebrow">One last little wish</p>
+  <h2>Happy Birthday, Suhani!</h2>
+  <p class="subtitle">
+    May your days be filled with genuine smiles,
+    beautiful surprises, peaceful moments
+    and people who make you feel loved.
+    <br><br>
+    May the year ahead bring you closer to
+    everything your heart wishes for.
+  </p>
+
+  <button class="btn" onclick="celebrate()">
+    Make a little wish ✨
+  </button>
+
+  <p id="wishMessage" style="color:#ffb5cc;line-height:1.8"></p>
+
+  <button class="btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    Back to the beginning ↑
+  </button>
 </div>
 
+<footer>
+  A little birthday page made with care ❤️
+</footer>
+
 <script>
-const specialNickname = "meri motki";
+function openSurprise() {
+  document.getElementById("memories").scrollIntoView({
+    behavior: "smooth"
+  });
+  hearts(15);
+}
 
-document.getElementById("unlock").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const answer = document.getElementById("nickname").value.trim().toLowerCase();
+const personalLetter = `Dear Suhani,
 
-  if (answer === specialNickname.toLowerCase()) {
-    document.getElementById("letter").style.display = "block";
-    document.getElementById("error").textContent = "";
-    document.getElementById("letter").scrollIntoView({behavior: "smooth"});
+Happy Birthday! ❤️
+
+Today is a reminder that the world became a little more special because someone like you is in it.
+
+I hope you always find reasons to smile, courage when things get difficult, and people who appreciate you for who you truly are.
+
+Thank you for being someone worth making this little surprise for. I wanted to create something different, something you could open and revisit whenever you wanted a small reason to smile.
+
+I cannot promise that every day will be perfect, but I sincerely hope that the days ahead bring you happiness, growth, peace and beautiful memories.
+
+Never forget that your dreams matter, your happiness matters, and you deserve good things in life.
+
+Keep smiling, keep growing, and keep being yourself.
+
+Wishing you the happiest birthday and a beautiful year ahead. 🌷
+
+With lots of care,
+Someone who wanted to make your day a little more special ❤️`;
+
+function openLetter() {
+  const letter = document.getElementById("letterText");
+  const button = document.getElementById("letterButton");
+  const hint = document.getElementById("letterHint");
+
+  letter.textContent = personalLetter;
+  letter.classList.remove("hidden");
+  button.classList.add("hidden");
+  hint.classList.add("hidden");
+
+  document.getElementById("envelope").textContent = "💖";
+  hearts(20);
+}
+
+function hearts(amount) {
+  const symbols = ["❤️", "💗", "💕", "✨", "🌸"];
+
+  for (let i = 0; i < amount; i++) {
+    const heart = document.createElement("span");
+    heart.className = "heart";
+    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 12000);
+  }
+}
+
+function celebrate() {
+  document.getElementById("wishMessage").textContent =
+    "Close your eyes, make a wish, and keep a little hope in your heart. ✨❤️";
+  hearts(35);
+}
+
+setInterval(() => {
+  if (!document.hidden) hearts(1);
+}, 1800);
+  const SECRET_NICKNAME = "meri motki";
+
+document.body.classList.add("locked");
+
+document.getElementById("nicknameForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const entered = document.getElementById("nicknameInput").value.trim();
+  const message = document.getElementById("gateMessage");
+
+  if (SECRET_NICKNAME === "meri motki") {
+    message.textContent = "Set your nickname in the code first ❤️";
+    return;
+  }
+
+  if (entered.toLowerCase() === SECRET_NICKNAME.toLowerCase()) {
+    document.getElementById("gate").remove();
+    document.body.classList.remove("locked");
+    window.scrollTo(0, 0);
+    hearts(15);
   } else {
-    document.getElementById("error").textContent = "Try again, meri jaan ❤️";
+    message.textContent = "Wrong nickname! Try again 💗";
   }
 });
 </script>
+
 </body>
 </html>
